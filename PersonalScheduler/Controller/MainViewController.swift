@@ -40,7 +40,7 @@ class MainViewController: UIViewController {
         button.setTitle("회원가입", for: .normal)
         button.setTitleColor(.tintColor, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
-//        button.addTarget(self, action: #selector(pushSignUpButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(pushSignUpButton), for: .touchUpInside)
         return button
     }()
     
@@ -85,11 +85,11 @@ class MainViewController: UIViewController {
         return label
     }()
     
-//    @objc private func pushSignUpButton(_ sendor: UIButton) {
-//        let signUpViewController = SignUpViewController()
-//        signUpViewController.modalPresentationStyle = .fullScreen
-//        self.present(signUpViewController, animated: true)
-//    }
+    @objc private func pushSignUpButton(_ sendor: UIButton) {
+        let signUpViewController = SignUpViewController()
+        signUpViewController.modalPresentationStyle = .fullScreen
+        self.present(signUpViewController, animated: true)
+    }
 }
 
 //MARK: - 레이아웃

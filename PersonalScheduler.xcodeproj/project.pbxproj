@@ -15,6 +15,7 @@
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
 		AA0C9C41296D9751001D3D93 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA0C9C40296D9751001D3D93 /* GoogleService-Info.plist */; };
 		AA0C9C46296D9948001D3D93 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AA0C9C45296D9948001D3D93 /* FirebaseAnalytics */; };
+		AA0C9C48296DDA6D001D3D93 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0C9C47296DDA6D001D3D93 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA0C9C40296D9751001D3D93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AA0C9C47296DDA6D001D3D93 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
 				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
 				63AAAB052967EA2600775EC3 /* MainViewController.swift */,
+				AA0C9C47296DDA6D001D3D93 /* SignUpViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63AAAB062967EA2600775EC3 /* MainViewController.swift in Sources */,
+				AA0C9C48296DDA6D001D3D93 /* SignUpViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 			);
