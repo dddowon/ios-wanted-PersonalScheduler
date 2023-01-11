@@ -87,6 +87,7 @@ class MainViewController: UIViewController {
     
     @objc private func pushSignUpButton(_ sendor: UIButton) {
         let signUpViewController = SignUpViewController()
+        
         signUpViewController.modalPresentationStyle = .fullScreen
         self.present(signUpViewController, animated: true)
     }

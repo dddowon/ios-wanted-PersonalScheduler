@@ -7,8 +7,13 @@
 
 import Foundation
 import UIKit
+import Firebase
+import FirebaseFirestoreSwift
+import FirebaseAuth
 
 class SignUpViewController: UIViewController {
+    static var db = Firestore.firestore()
+    var count: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,7 +152,59 @@ class SignUpViewController: UIViewController {
     }()
     
     @objc private func signUpButton(_ sendor: UIButton) {
-        self.dismiss(animated: true)
+        guard let id = idTextField.text?.description,
+              let password = passwordTextField.text?.description,
+              let reconfirmPassword = reconfirmPasswordTextField.text?.description,
+              let name = nameTextField.text?.description,
+              let phoneNumber = phoneNumberTextField.text?.description else { return }
+        
+        if id.isEmpty {
+            let alert = UIAlertController(title: "회원가입 실패", message: "아이디를 입력해주세요", preferredStyle: UIAlertController.Style.alert)
+            let defaultAction = UIAlertAction(title: "다시 하기", style: .default)
+            alert.addAction(defaultAction)
+            present(alert, animated: false, completion: nil)
+        } else if password.isEmpty {
+            let alert = UIAlertController(title: "회원가입 실패", message: "비밀번호를 입력해주세요", preferredStyle: UIAlertController.Style.alert)
+            let defaultAction = UIAlertAction(title: "다시 하기", style: .default)
+            alert.addAction(defaultAction)
+            present(alert, animated: false, completion: nil)
+        } else if reconfirmPassword.isEmpty {
+            let alert = UIAlertController(title: "회원가입 실패", message: "재확인 비밀번호를 입력해주세요", preferredStyle: UIAlertController.Style.alert)
+            let defaultAction = UIAlertAction(title: "다시 하기", style: .default)
+            alert.addAction(defaultAction)
+            present(alert, animated: false, completion: nil)
+        } else if name.isEmpty {
+            let alert = UIAlertController(title: "회원가입 실패", message: "이름을 입력해주세요", preferredStyle: UIAlertController.Style.alert)
+            let defaultAction = UIAlertAction(title: "다시 하기", style: .default)
+            alert.addAction(defaultAction)
+            present(alert, animated: false, completion: nil)
+        } else if phoneNumber.isEmpty {
+            let alert = UIAlertController(title: "회원가입 실패", message: "전화번호를 입력해주세요", preferredStyle: UIAlertController.Style.alert)
+            let defaultAction = UIAlertAction(title: "다시 하기", style: .default)
+            alert.addAction(defaultAction)
+            present(alert, animated: false, completion: nil)
+        } else if password != reconfirmPassword {
+            let alert = UIAlertController(title: "회원가입 실패", message: "입력하신 비밀번호와 재확인 비밀번호가 맞지 않습니다.", preferredStyle: UIAlertController.Style.alert)
+            let defaultAction = UIAlertAction(title: "다시 하기", style: .default)
+            alert.addAction(defaultAction)
+            present(alert, animated: false, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "회원가입 성공", message: "로그인 해주세여", preferredStyle: UIAlertController.Style.alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                self.dismiss(animated: true)
+            }
+            alert.addAction(defaultAction)
+            present(alert, animated: false, completion: nil)
+            count += 1
+            Auth.auth().createUser(withEmail: id, password: password) { [self] authResult, error in
+                guard let user = authResult?.user, error == nil else {
+                    print(error)
+                    return
+                }
+                
+                SignUpViewController.db.collection("UserData").document(user.uid).setData(["name": name, "phoneNumber": phoneNumber])
+            }
+        }
     }
 }
 
