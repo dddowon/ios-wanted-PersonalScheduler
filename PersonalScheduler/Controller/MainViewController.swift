@@ -11,6 +11,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         loginLayoutAddView()
         setloginLayout()
     }
@@ -67,6 +68,7 @@ class MainViewController: UIViewController {
         button.setTitle("로그인", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .gray
+        button.addTarget(self, action: #selector(pushLoginButton), for: .touchUpInside)
         return button
     }()
     
@@ -87,9 +89,13 @@ class MainViewController: UIViewController {
     
     @objc private func pushSignUpButton(_ sendor: UIButton) {
         let signUpViewController = SignUpViewController()
-        
         signUpViewController.modalPresentationStyle = .fullScreen
         self.present(signUpViewController, animated: true)
+    }
+    
+    @objc func pushLoginButton(_ sendor: Any) {
+        let schedulViewController = SchedulViewController() 
+        self.navigationController?.pushViewController(schedulViewController, animated: true)
     }
 }
 
